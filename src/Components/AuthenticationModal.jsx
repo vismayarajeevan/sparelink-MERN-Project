@@ -11,7 +11,9 @@ const AuthenticationModal = ({authenticationModal,
     togglePasswordVisibility,
     handleForgotPasswordModal,
     handleSecondaryAction,
-    showPassword,}) => {
+    showPassword,
+    handleSignUpAndOtp
+  }) => {
 
   return (
     <>
@@ -104,7 +106,7 @@ const AuthenticationModal = ({authenticationModal,
               </>
             )}
 
-            <SubmitButtons>
+            <SubmitButtons onClick={isRegister ? handleSignUpAndOtp : null}>
               {isRegister ? 
                   "Sign Up"
             :

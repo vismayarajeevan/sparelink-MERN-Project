@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Form, Modal } from 'react-bootstrap'
 import SubmitButtons from '../ReusableComponents/SubmitButtons'
+import OTPInput from 'react-otp-input'
 
 
-const OtpModal = () => {
+const OtpModal = ({handleOtpModal,showOtpModal,setShowOtpModal}) => {
+
+   // state to hold otp
+   const [otp, setOtp] = useState('');
+
+
+
+
+
   return (
     <Modal centered show={showOtpModal} onHide={() => setShowOtpModal(false)}>
       <Modal.Header closeButton style={{ borderBottom: 'none' }}>
@@ -12,13 +21,13 @@ const OtpModal = () => {
       <Modal.Body className="ps-5 pe-5">
          <div >
               <p>An OTP has been sent to the provided email address 
-      <a href="" className='ms-1'>{enteredEmail}. </a> </p>
+      <a href="" className='ms-1'>nbbb.com. </a> </p>
       <p>Please enter the OTP to proceed.</p>
       </div>
       <div className='mt-5 mb-5'>
-        <OtpInput
+        <OTPInput
           value={otp}
-          onChange={handleOtpChange}
+          // onChange={handleOtpChange}
           numInputs={6}
           renderSeparator={<span>-</span>}
           renderInput={(props) => (
@@ -36,7 +45,7 @@ const OtpModal = () => {
             />
           )}
         />
-        {error && <p style={{ color: "red", marginTop: "5px" }}>{error}</p>}
+        {/* {error && <p style={{ color: "red", marginTop: "5px" }}>{error}</p>} */}
       </div>
      
       <div>
@@ -44,21 +53,25 @@ const OtpModal = () => {
   
           </Form>
       </div>
-              <SubmitButtons onClick={handleOtp}>
-              {isLoading ? (
+              <SubmitButtons 
+              // onClick={handleOtp}
+              >
+              {/* {isLoading ? ( */}
                   <>
-                    <Spinner
+                    {/* <Spinner
                       animation="border"
                       role="status"
                       size="sm"
                       className="me-2"
                     >
                       <span className="visually-hidden">Loading...</span>
-                    </Spinner>
-                    Verifying...
+                    </Spinner> */}
+                    {/* Verifying... */}
                   </>
-                ) :" Submit "
-                }
+                
+                Submit 
+                
+                {/* } */}
               </SubmitButtons>
          
       </Modal.Body>

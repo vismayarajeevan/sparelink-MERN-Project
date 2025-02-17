@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Navbarcomp from './Navbarcomp';
 import AuthenticationModal from './AuthenticationModal';
 import FrgtPasswordModal from './FrgtPasswordModal';
+import OtpModal from './OtpModal';
 
 
 
@@ -19,6 +20,9 @@ const Header = () => {
 
   // state for handle forgotpassword modal
   const [ showForgotPasswordModal, setShowForgotPasswordModal] = useState(false)
+
+  // state for handle otpmodal
+  const [showOtpModal, setShowOtpModal] = useState(false)
 
   // function to show password
   const togglePasswordVisibility = () => {
@@ -40,10 +44,24 @@ const Header = () => {
     setIsRegister(true)
   };
 
+  // Function to handle sign-up and open OTP modal
+const handleSignUpAndOtp = () => {
+  handleSignUpClick(); // Show the signup modal
+  setTimeout(() => {
+      handleOtpModal(); // Open OTP modal after sign-up
+  }, 500); // Delay to ensure modal transitions properly
+};
+
 
   // to open forgot password modal
   const handleForgotPasswordModal =()=>{
     setShowForgotPasswordModal(true)
+    setAuthenticationModal(false)
+  }
+
+  // to handle otp modal
+  const handleOtpModal =()=>{
+    setShowOtpModal(true)
     setAuthenticationModal(false)
   }
 
@@ -66,6 +84,7 @@ const Header = () => {
 
 
           handleForgotPasswordModal={handleForgotPasswordModal}
+          handleSignUpAndOtp={handleSignUpAndOtp}
         />
 
         
@@ -85,6 +104,16 @@ const Header = () => {
     />
   )
 }
+
+    {/* ***************************otp modal***************************** */}
+    {
+      showOtpModal&& 
+      <OtpModal
+      showOtpModal={showOtpModal}
+      setShowOtpModal={setShowOtpModal}
+      />
+    }
+
 
     </>
    
