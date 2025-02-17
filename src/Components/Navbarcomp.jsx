@@ -68,28 +68,15 @@ const Navbarcomp = ({ handleLoginClick }) => {
             <div className="d-flex flex-column">
               <div className="d-flex align-items-center gap-3">
                 <img src={logo} className="img-fluid" width="50px" alt="Logo" />
-                {/* Search Bar for Large Screens */}
-                <Form className="d-none d-lg-block">
-                  <Form.Control
-                    type="search"
-                    placeholder="Search here..."
-                    style={{
-                      width: "250px",
-                      border: "none",
-                      background: "#F0F0F0",
-                      height: "35px",
-                    }}
-                    aria-label="Search"
-                  />
-                </Form>
-              </div>
-              {/* Location Below Logo */}
+                 {/* Location Below Logo */}
               <div className="d-flex align-items-center gap-1 mt-1">
                 <MapPin size={16} className="text-danger" />
                 <span className="text-secondary" style={{ fontSize: "13px" }}>
                   {location}
                 </span>
               </div>
+              </div>
+             
             </div>
             {/* Navbar Toggle */}
             <Navbar.Toggle aria-controls="basic-navbar-nav" />

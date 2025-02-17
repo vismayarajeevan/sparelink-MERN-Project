@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Form, Modal, Spinner } from "react-bootstrap";
 import Formfield from '../ReusableComponents/Formfield';
 import SubmitButtons from '../ReusableComponents/SubmitButtons';
+import GoogleButton from '../ReusableComponents/GoogleButton';
 
 
 
@@ -123,7 +124,7 @@ const AuthenticationModal = ({authenticationModal,
             </div>
 
             {/* Continue with Google */}
-            {/* <GoogleButton /> */}
+            <GoogleButton />
 
             {/* Secondary action */}
             <p className="text-center text-muted">
