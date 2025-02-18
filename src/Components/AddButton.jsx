@@ -3,8 +3,20 @@ import { Button, Form, InputGroup, Offcanvas } from 'react-bootstrap';
 import { globalStyles } from '../globalStyles';
 import SubmitButtons from '../ReusableComponents/SubmitButtons';
 import ToggleCategoryBtn from '../ReusableComponents/ToggleCategoryBtn';
+import { setActiveButton,setActiveCondition,
+  resetActiveButton,
+  resetActiveCondition, } from '../Redux/slices/ProductSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
+
 
 const AddButton = () => {
+
+  
+  // call the action using dispatch
+  const dispatch = useDispatch();
+  // access the state
+  const { activeButton, activeCondition} = useSelector((state) => state.productReducer);
 
     // state for sidebar open and close
   const [isAddProductSidebarOpen, setIsAddProductSidebarOpen] = useState(false);
@@ -28,6 +40,16 @@ const AddButton = () => {
     { label: "New", value: 1 },
     { label: "Used", value: 2 },
   ];
+
+  const handleCategoryChange = (value) => {
+    dispatch(setActiveButton(value));
+    setProductDetails((prev) => ({ ...prev, category: value }));
+  };
+
+  const handleConditionChange = (value) => {
+    dispatch(setActiveCondition(value));
+    setProductDetails((prev) => ({ ...prev, condition: value }));
+  };
 
 
   return (
@@ -83,17 +105,17 @@ const AddButton = () => {
         <Form.Group className="mb-3">
           <Form.Label className="AddFontSize">Category</Form.Label>
           <div className="d-flex flex-wrap gap-2 mt-2">
-            {/* {categories.map((category) => (
+            {categories.map((category) => (
               <ToggleCategoryBtn
-                // key={category.value}
-                // label={category.label}
-                // value={category.label}
-                // onChange={handleCategoryChange}
-                // activeButton={activeButton}
-                // setActiveButton={handleCategoryChange}
-                // type="category"
+                key={category.value}
+                label={category.label}
+                value={category.label}
+                onChange={handleCategoryChange}
+                activeButton={activeButton}
+                setActiveButton={handleCategoryChange}
+                type="category"
               />
-            ))} */}
+            ))}
           </div>
           {/* {errors.category && (
             <div className="text-danger">{errors.category}</div>
@@ -104,16 +126,16 @@ const AddButton = () => {
         <Form.Group className="mb-3">
           <Form.Label className="AddFontSize">Condition</Form.Label>
           <div className="d-flex flex-wrap gap-2 mt-2">
-            {/* {conditions.map((condition) => (
+            {conditions.map((condition) => (
               <ToggleCategoryBtn
-                // key={condition.value}
-                // label={condition.label}
-                // value={condition.label}
-                // activeButton={activeCondition}
-                // setActiveButton={handleConditionChange}
-                // type="condition"
+                key={condition.value}
+                label={condition.label}
+                value={condition.label}
+                activeButton={activeCondition}
+                setActiveButton={handleConditionChange}
+                type="condition"
               />
-            ))} */}
+            ))}
           </div>
           {/* {errors.condition && (
             <div className="text-danger">{errors.condition}</div>
@@ -312,7 +334,7 @@ const AddButton = () => {
               >
                 <span className="visually-hidden">Loading...</span>
               </Spinner> */}
-              Submitting...
+              Submit
             {/* </>
           ) : (
             " Submit "

@@ -1,0 +1,73 @@
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-img-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .card-dropdown {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+  }
+  
+  .no-arrow::after {
+    display: none;
+  }
+  
+  .dropdown-toggle {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: none !important;
+    padding: 0 !important;
+    border-radius: 50%;
+  }
+  
+  .dropdown-toggle:hover {
+    background: rgba(255, 255, 255, 1) !important;
+  }
+  
+
+
+  .price {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #28a745;
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-right: 1rem;
+  }
+  
+  .card-text {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: block;
+    place-items: unset;
+  }

@@ -5,16 +5,25 @@ import { Navbar, Container, Form, Nav } from "react-bootstrap";
 import user from "../assets/user.svg";
 import logo from "../assets/logo.png";
 import { MapPin } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbarcomp = ({ handleLoginClick }) => {
-  const [activeLink, setActiveLink] = useState("home");
+  // const [activeLink, setActiveLink] = useState("home");
   const [location, setLocation] = useState("Fetching location...");
+
+  const locations = useLocation()
+  const [activeLink, setActiveLink] = useState("/");
+
+  useEffect(() => {
+    setActiveLink(locations.pathname);
+  }, [locations]);
 
   useEffect(() => {
     // Check if Geolocation is supported
     if ("geolocation" in navigator) {
       // Show alert to request permission
-      alert("This website would like to access your location to provide a better experience.");
+      
+      // alert("This website would like to access your location to provide a better experience.");
 
       // Get current position
       // navigator.geolocation.getCurrentPosition(
@@ -101,22 +110,49 @@ const Navbarcomp = ({ handleLoginClick }) => {
 
             {/* Navigation Links */}
             <Nav className="me-auto gap-lg-4 gap-2">
-              <Nav.Link
-                href="#home"
+              {/* <Link
+                to={'/'}
                 style={{ fontWeight: '600', fontSize: "16px" }}
                 className={activeLink === "home" ? "active" : "text-secondary"}
                 onClick={() => setActiveLink("home")}
               >
                 Home
-              </Nav.Link>
-              <Nav.Link
-                href="#posts"
+              </Link>
+              <Link
+                
+                to={'/myposts'}
                 style={{ fontWeight: '600', fontSize: "16px" }}
                 className={activeLink === "posts" ? "active" : "text-secondary"}
                 onClick={() => setActiveLink("posts")}
               >
                 My Posts
-              </Nav.Link>
+              </Link> */}
+
+<Link
+                to="/"
+                style={{
+                  fontWeight: "600",
+                  fontSize: "16px",
+                  color: activeLink === "/" ? "black" : "gray",
+                  textDecoration: "none",
+                }}
+                onClick={() => setActiveLink("/")}
+              >
+                Home
+              </Link>
+
+              <Link
+                to="/myposts"
+                style={{
+                  fontWeight: "600",
+                  fontSize: "16px",
+                  color: activeLink === "/myposts" ? "black" : "gray",
+                  textDecoration: "none",
+                }}
+                onClick={() => setActiveLink("/myposts")}
+              >
+                My Posts
+              </Link>
 
               <Nav.Link
                 href="#profile"
@@ -136,6 +172,7 @@ const Navbarcomp = ({ handleLoginClick }) => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      
     </>
   );
 };
